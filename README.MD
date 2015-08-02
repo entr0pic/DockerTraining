@@ -39,9 +39,8 @@ brew cask install docker-machine
 sudo pip install pyopenssl ndg-httpsclient pyasn1 docker-compose
 ```
 
-# Setup a Docker Host
+# Setup a Docker Host with Docker Machine
 
-##Create a new docker host VM
 Use either virtualbox:
 ```
 docker-machine create --driver virtualbox --virtualbox-cpu-count 4 --virtualbox-memory "2048"  --virtualbox-disk-size "5000" dev-host
