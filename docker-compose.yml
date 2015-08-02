@@ -1,0 +1,36 @@
+redis:
+  image: redis
+  expose:
+    - 6379
+  ports:
+    - 6379:6379
+
+frontend:
+  image: frontend
+  environment:
+    PORT : 80
+  links:
+    - redis
+  expose:
+    - 80
+
+proxy:
+  image: proxy
+  volumes:
+   - haproxy:/haproxy-override
+  links:
+   - frontend
+  ports:
+   - 80:80
+   - 70:70
+  expose:
+   - 80
+   - 70
+
+viewer:
+  image: frontend
+  environment:
+    ENABLED : 0
+  links:
+    - proxy
+  command: "node viewer.js"

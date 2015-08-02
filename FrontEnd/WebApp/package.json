@@ -1,0 +1,10 @@
+{
+  "name": "docker-example-web-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "latest",
+    "redis": "latest",
+    "connect": "latest",
+    "http": "latest"
+  }
+}
