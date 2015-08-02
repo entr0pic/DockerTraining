@@ -4,7 +4,7 @@
 
 Docker is currently leading the charge in containers. Want to know more check with Docker themselves: [https://www.docker.com/whatisdocker](https://www.docker.com/whatisdocker)
 
-## Docker toolsets
+## Docker toolset
 
 [Docker Engine](https://www.docker.com/docker-engine) is the the core of docker, providing the runtime for building and running containers. It provides a REST API as well as a CLI.
 
