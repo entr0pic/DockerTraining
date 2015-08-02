@@ -188,7 +188,11 @@ Now lets scale out the frontend:
 ```
 docker-compose scale frontend=5
 ```
-We'll need to shutdown the app to change the proxy config. The file is in Proxy/haproxy/haproxy.cfg
+We'll need to shutdown the app to change the proxy config.
+```
+docker-compose kill
+```
+The file is in Proxy/haproxy/haproxy.cfg
 Uncomment the following lines in the round robin config:
 ```
 server frontend_2 frontend_2:80 check
