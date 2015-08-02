@@ -74,9 +74,9 @@ CONTAINER ID        IMAGE                             COMMAND                CRE
 ```
 
 The applications structure looks a bit like this:
- - [Node client simulator](Frontend/Dockerfile)
+ - [Node client simulator](FrontEnd/Dockerfile)
  - [Reverse proxy server](Proxy/Dockerfile)
- - [Node web application](Frontend/Dockerfile)
+ - [Node web application](FrontEnd/Dockerfile)
  - [Redis](Redis/Dockerfile)
 
 
