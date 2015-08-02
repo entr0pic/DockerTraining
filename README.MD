@@ -79,6 +79,7 @@ The applications structure looks a bit like this:
  - [Node web application](Frontend/Dockerfile)
  - [Redis](Redis/Dockerfile)
 
+
  ![App Structure](app_structure.png)
  
 ## Building
@@ -212,4 +213,49 @@ docker-compose up -d
 This time go to port 70 in your browser and you can see how the proxy is redirecting the hits to each frontend server but if we go the the original URL we can see the count going up in a uniform manner because the frontend servers don't hold the source of truth for the counter, this is still in the single redis container.
 
 This structure allows you to scale out application logic almost infinitely to accomodate more hits.
+
+## Monitoring
+There are many tools out there to monitor running containers and the docker host itself. Because docker providers a rest API to access all of this information many of these tools are open source or at least free.
+
+###cAdvisor
+One of the most rudimentary but still effective is Google's cAdvisor. To run it simply run the below command:
+```
+docker run \
+  -v /:/rootfs:ro \
+  -v /var/run:/var/run:rw \
+  -v /sys:/sys:ro \
+  -v /var/lib/docker/:/var/lib/docker:ro \
+  -p 8888:8080 \
+  -d \
+  --name cadvisor \
+  google/cadvisor:latest
+```
+
+Check it out by going to your host IP address and port 8888.
+
+###DockerUI
+Docker UI gives a better view of running containers but has less overall system monitoring then cAdvisor.
+
+You can run it with:
+```
+docker run -d -p 9000:9000 --privileged -v /var/run/docker.sock:/var/run/docker.sock dockerui/dockerui
+```
+
+###Rancher
+Rancher is a new starter in the docker monitoring field but looks quite promising. It providers monitoring of multiple hosts (local or cloud) giving you details at the host and container level and allows you to set up "Stacks" similarly to docker-compose.
+
+To run it:
+```
+docker run -d --restart=always -p 8080:8080 --name rancher-server rancher/server
+```
+
+Now browser to the your host address at port 8080.
+- First you should see the option to add a host, click this
+- You'll be asked what address the rancher will be available at. If your using a hostname from your hosts file you'll need to manually enter the IP address of the docker machine (```docker-machine ip dev-host```) otherwise you can use the current IP provided in the options.
+- Next you'll be asked where the host is located, select custom and you'll be presented with instructions.
+- Copy the command to launch the container provided but don't include the sudo in the command (as its not needed in out set up).
+
+This will now launch the rancher agent which will inspect the docker host (either locally or on the cloud provider) and report back to your local copy of rancher. It can take a several seconds to a minute for the host to be reported in the rancher UI.
+
+
 
