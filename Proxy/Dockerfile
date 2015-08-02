@@ -9,10 +9,6 @@ RUN apk add --update haproxy
 ADD haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 ADD start.sh /haproxy-start
 
-
-# Define mountable directories.
-VOLUME ["/haproxy-override"]
-
 # Define working directory.
 WORKDIR /etc/haproxy
 

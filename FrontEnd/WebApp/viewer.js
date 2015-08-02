@@ -17,7 +17,7 @@ callback = function(response) {
   });
 }
 
-if (process.env.ENABLED=="1"||process.env.ENABLED=="true") {
+if (process.env.ENABLED!="0") {
   setInterval(function(){
     var requestCount = Math.round(Math.random()*10);
     for (var i=0; i<requestCount; i++) {

@@ -16,8 +16,6 @@ frontend:
 
 proxy:
   image: proxy
-  volumes:
-   - haproxy:/haproxy-override
   links:
    - frontend
   ports:
