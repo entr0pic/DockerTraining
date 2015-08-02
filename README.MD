@@ -14,7 +14,9 @@ Docker is currently leading the charge in containers. Want to know more check wi
 
 [Docker Swarm](https://www.docker.com/docker-swarm) can create scale out docker hosts while allowing you to interact with the docker engine API as if it was a single host.
 
-[Docker Registry](https://www.docker.com/docker-registry) is basically like git for docker contianers. It stores images (the base of a contianer before it's instantiated) in a central repository.
+[Docker Registry](https://www.docker.com/docker-registry) is basically like git for docker containers. It stores images (the base of a contianer before it's instantiated) in a central repository.
+
+[Kitematic](https://www.docker.com/docker-kitematic) a simple GUI for browsing and running containers.
 
 ## What we'll be looking at
 
