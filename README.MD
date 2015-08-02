@@ -40,6 +40,7 @@ sudo pip install pyopenssl ndg-httpsclient pyasn1 docker-compose
 ```
 
 # Setup a Docker Host
+
 ##Create a new docker host VM
 Use either virtualbox:
 ```
@@ -59,10 +60,17 @@ echo `docker-machine ip dev-host` dev-host >> /etc/hosts
 ```
 
 # Instructions
-Check that docker is running
 
 Pull this repo locally
+```
+git clone http://git.servian.com/adam.parker/dockertraining.git DockerTraining
+```
+Check that docker is running
 
 ```
 docker ps
+# Should return
+CONTAINER ID        IMAGE                             COMMAND                CREATED             STATUS              PORTS                              NAMES
 ```
+
+Now lets take a look at the [docker-compose.yml](dockertraining/blob/master/docker-compose.yml) file
